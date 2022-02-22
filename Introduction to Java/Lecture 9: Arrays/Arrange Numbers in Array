@@ -1,0 +1,21 @@
+
+public class Solution {
+    
+   public static int[] arrange(int[] arr, int n) {
+		int left=0,right=n-1,counter=1;
+		while(left<=right) {
+			if(counter%2==1) {
+				arr[left++]=counter;
+			}else {
+				arr[right--]=counter;
+			}
+			counter++;
+		}
+		
+	
+		return arr;
+		
+		
+	}
+
+}
