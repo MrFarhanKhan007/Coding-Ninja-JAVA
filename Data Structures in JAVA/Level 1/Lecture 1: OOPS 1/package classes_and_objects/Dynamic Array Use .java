@@ -1,70 +1,25 @@
 package classes_and_objects;
 
-public class DynamicArray {
-    private int data[];
-    private int nextIndex;
+public class DynamicArrayUse {
 
-    public DynamicArray() {
-        data = new int[5];
-        nextIndex = 0;
-    }
+    public static void main(String[] args) {
+        DynamicArray d = new DynamicArray();
 
-    public int size() {
-        return nextIndex;
-    }
 
-    public void add(int element) {
-        if (nextIndex == data.length) {
-            restructure();
-        }
-        data[nextIndex] = element;
-        nextIndex++;
-    }
-
-    public void set(int index, int element) {
-        if (index > nextIndex) {
-            return;
-        }
-        if (index < nextIndex) {
-            data[index] = element;
-        } else {
-            add(element);
+        for (int i = 0; i < 10; i++) {
+            d.add(i + 10);
         }
 
-    }
+        System.out.println(d.size());
 
-    public int get(int index) {
-        if (index >= nextIndex) {
-            // error out
-            return -1;
-        }
-        return data[index];
-    }
+        d.set(4, 10);
+        System.out.println(d.get(3));
+        System.out.println(d.get(4));
 
-    public boolean isEmpty() {
-        if (size() == 0) {
-            return true;
-        } else {
-            return false;
+        while (!d.isEmpty()) {
+            System.out.println(d.removeLast());
+            System.out.println("size = " + d.size());
         }
     }
 
-    public int removeLast() {
-        if (size() == 0) {
-            // error out
-            return -1;
-        }
-        int value = data[nextIndex - 1];
-        data[nextIndex - 1] = 0;
-        nextIndex--;
-        return value;
-    }
-
-    private void restructure() {
-        int temp[] = data;
-        data = new int[data.length * 2];
-        for (int i = 0; i < temp.length; i++) {
-            data[i] = temp[i];
-        }
-    }
 }
